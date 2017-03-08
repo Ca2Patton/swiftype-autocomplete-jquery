@@ -10,6 +10,7 @@
             var withSections = [],
               noSections = [];
 
+// Sections is a field used by Crawler-based engines. This can be changed to any field in an engine.
             $.each(data, function(docType, results) {
               $.each(results, function(idx, result) {
                 if (result.sections && result.sections.length > 15) {
@@ -19,10 +20,9 @@
                 }
               });
             });
-
-            var withSectionsList = $('<ul class="with_sections"></ul>'),
-              noSectionsList = $('<ul class="no_sections"></ul>');
-
+// Labelling can be done here
+            var withSectionsList = $('<ul class="with_sections"><span>With Sections</span></ul>'),
+              noSectionsList = $('<ul class="no_sections"><span>No Sections</span></ul>');
             $.each(withSections, function(idx, item) {
               ctx.registerResult($('<li class="result"><p>' + item['title'] + '</p></li>').appendTo(withSectionsList), item);
             });
